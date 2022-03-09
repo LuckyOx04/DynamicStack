@@ -1,13 +1,14 @@
 #include <iostream>
 using namespace std;
 
+template <class T>
 class DynamicStack{
 	class Node{
-		int element;
+		T element;
 		Node* next;
 
 		public:
-		int getElement(){
+		T getElement(){
 			return element;
 		}
 
@@ -15,7 +16,7 @@ class DynamicStack{
 			return next;
 		}
 
-		void setElement(int element){
+		void setElement(T element){
 			this->element = element;
 		}
 
@@ -23,12 +24,12 @@ class DynamicStack{
 			this->next = next;
 		}
 
-		Node(int item){
+		Node(T item){
 			element = item;
 			next = NULL;
 		}
 
-		Node(int item, Node* next){
+		Node(T item, Node* next){
 			element = item;
 			this->next = next;
 		}
@@ -43,7 +44,7 @@ class DynamicStack{
 		top = NULL;
 	}
 
-	void push(int item){
+	void push(T item){
 		if(count == 0){
 			top = new Node(item);
 		}
@@ -55,15 +56,24 @@ class DynamicStack{
 	}
 
 	void clear(){
+		if (count == 0) return;
+		for(int i = 0; i < count - 1; i++){
+			Node* removeTop = top;
+			top = top -> getNext();
+			delete removeTop;
+		}
+		delete top;
 		top = NULL;
 		count = 0;
 	}
 
-	int pop(){
-		int result = top -> getElement();
+	T pop(){
+		if (count == 0) throw invalid_argument("Stack is empty!");
+		T result = top -> getElement();
 		Node* removeTop = top;
 		top = top -> getNext();
 		delete removeTop;
+		count--;
 		return result;
 	}
 
@@ -71,7 +81,8 @@ class DynamicStack{
 		return count;
 	}
 
-	int peek(){
+	T peek(){
+		if (count == 0) throw invalid_argument("Stack is empty!");
 		return top -> getElement();
 	}
 };

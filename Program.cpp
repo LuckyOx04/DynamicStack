@@ -1,18 +1,25 @@
 #include <iostream>
+#include <string>
 #include "DynamicStack.h"
 
 using namespace std;
 
 int main(){
-	DynamicStack* stack = new DynamicStack();
-	stack -> push(3);
-	stack -> push(4);
-	stack -> push(6);
-	stack -> push(13);
-	stack -> push(1);
+	DynamicStack<string>* stack = new DynamicStack<string>();
+	stack -> push("hungry.");
+	stack -> push("am");
+	stack -> push("I");
+	stack -> push("up?");
+	stack -> push("What's");
 
-	cout<<stack -> pop()<<" "<<stack -> pop()<<"\n";
+	int count = stack -> getCount();
 
+	for(int i = 0; i < count; i++){
+		cout<<stack -> pop()<<" ";
+	}
+	cout<<"\n";
+
+	stack -> clear();
 	delete stack;
 	return 0;
 }
