@@ -7,3 +7,5 @@ The linked stack has five methods:
 -pop() - returns the element from the top of the stack of type T. Then it removes it.
 -peek() - same as pop(), but the element is not removed.
 -clear() - empties the stack.
+
+The memory management is unsure. If you think it is not well done, feel free to fix it.
