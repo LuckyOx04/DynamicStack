@@ -6,11 +6,11 @@ using namespace std;
 
 int main(){
 	DynamicStack<string>* stack = new DynamicStack<string>();
-	stack -> push("hungry.");
-	stack -> push("am");
-	stack -> push("I");
-	stack -> push("up?");
-	stack -> push("What's");
+	stack -> push("O");
+	stack -> push("L");
+	stack -> push("L");
+	stack -> push("E");
+	stack -> push("H");
 
 	int count = stack -> getCount();
 
